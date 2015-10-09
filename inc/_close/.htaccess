@@ -1,0 +1,4 @@
+AuthType Basic
+AuthName "ComputerUndSound"
+#AuthUserFile /der/Pfad/zu/Ihrer/.htpwd
+require valid-user 

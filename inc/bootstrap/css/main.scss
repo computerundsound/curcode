@@ -1,0 +1,102 @@
+/*
+ * Copyright Jörg Wrase www.computer-und-sound.de
+ * 30.11.14 01:53
+ *
+ * Created by IntelliJ IDEA
+ *
+ * D:/_SERVER/_SELF/web208-cusp/domains/_SUBS_cusp/domainabrechnungen/htdocs/inc/bootstrap/css/main.scss
+ */
+@import "compass";
+@import "compass/css3";
+@import "../../js/jquery/ui/jquery-ui.min.css";
+@import "../../js/jquery/date-time-picker/jquery.datetimepicker.css";
+@import "../../js/highlight/styles/cusp.css";
+@import "bootstrap.css";
+@import "colors";
+
+$co_linkcolor_danger: #FF0035;
+
+#CuLoader {
+  display:    none;
+  position:   absolute;
+  top:        0;
+  left:       0;
+  width:      100%;
+  height:     100%;
+  z-index:    9999;
+  opacity:    0.75;
+  background: url("../../mat/ajax-loader.gif") no-repeat center #000000;
+}
+
+.cuHoverPointer {
+  cursor: pointer;
+}
+
+body {
+  display: block;
+}
+
+td, th {
+  vertical-align: top;
+}
+
+//.showCodeBtn {
+//
+//}
+
+.snippetBlockWrapper {
+  display:    block;
+  max-height: 50px;
+  margin:     0;
+  padding:    0;
+
+  code {
+	padding: 10px;
+	margin:  0;
+  }
+
+}
+
+#snippetInputMaskWrapper {
+  position:   static;
+  top:        0;
+  left:       0;
+  width:      100%;
+  height:     100%;
+  background: grey;
+  z-index:    999;
+  padding:    20px;
+  display:    none;
+
+}
+
+#domainaddonTemplate {
+  display: none;
+}
+
+#snippetdata_code_inputWrapper {
+
+  position: relative;
+  //  width: ;
+  height:   500px;
+  float:    none;
+  clear:    both;
+
+  #snippetdata_code_input {
+	position: absolute;
+	top:      0;
+	right:    0;
+	bottom:   0;
+	left:     0;
+  }
+}
+
+.cueditorEdit {
+  //position: absolute;
+  //top:      0;
+  //right:    0;
+  //bottom:   0;
+  //left:     0;
+
+  height: 300px;
+}

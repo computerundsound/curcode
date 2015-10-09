@@ -1,0 +1,30 @@
+{
+    "name": "cusp/projektname",
+    "description": "Projektnamer",
+    "minimum-stability": "dev",
+    "license": "proprietary",
+    "authors": [
+        {
+            "name": "Jörg Wrase - www.computer-und-sound.de",
+            "email": "info@cusp.de"
+        }
+    ],
+    "repositories": [
+        {
+            "type": "git",
+            "url": "git@github.com:computerundsound/cuLibrary.git"
+        }
+    ],
+
+    "autoload": {
+        "psr-4": {
+            "": "../app/"
+        }
+    },
+
+    "require": {
+        "computerundsound/culibrary": "dev-2.0_release",
+        "4nd/smarty": "v3.1.18",
+        "phpmailer/phpmailer": "v5.2.8"
+    }
+}

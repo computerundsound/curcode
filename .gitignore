@@ -1,0 +1,18 @@
+### JetBrains template
+# Covers JetBrains IDEs: IntelliJ, RubyMine, PhpStorm, AppCode, PyCharm
+
+*.iml
+
+## Directory-based project format:
+.idea/
+# if you remove the above rule, at least ignore the following:
+
+_config.php
+
+
+### Sass template
+.sass-cache
+
+*.scssc
+
+/inc/_close/views/templates_c/**

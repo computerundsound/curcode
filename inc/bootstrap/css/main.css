@@ -1,0 +1,100 @@
+@charset "UTF-8";
+/*
+ * Copyright J├Ârg Wrase www.computer-und-sound.de
+ * 30.11.14 01:53
+ *
+ * Created by IntelliJ IDEA
+ *
+ * D:/_SERVER/_SELF/web208-cusp/domains/_SUBS_cusp/domainabrechnungen/htdocs/inc/bootstrap/css/main.scss
+ */
+@import url(../../js/jquery/ui/jquery-ui.min.css);
+@import url(../../js/jquery/date-time-picker/jquery.datetimepicker.css);
+@import url(../../js/highlight/styles/cusp.css);
+@import url(bootstrap.css);
+/*
+ * Copyright J├Ârg Wrase www.computer-und-sound.de
+ * 30.11.14 01:53
+ *
+ * Created by IntelliJ IDEA
+ *
+ * D:/_SERVER/_SELF/web208-cusp/domains/_SUBS_cusp/domainabrechnungen/htdocs/inc/bootstrap/css/colors.scss
+ */
+/* line 19, main.scss */
+#CuLoader {
+  display: none;
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  z-index: 9999;
+  opacity: 0.75;
+  background: url("../../mat/ajax-loader.gif") no-repeat center #000000;
+}
+
+/* line 31, main.scss */
+.cuHoverPointer {
+  cursor: pointer;
+}
+
+/* line 35, main.scss */
+body {
+  display: block;
+}
+
+/* line 39, main.scss */
+td, th {
+  vertical-align: top;
+}
+
+/* line 47, main.scss */
+.snippetBlockWrapper {
+  display: block;
+  max-height: 50px;
+  margin: 0;
+  padding: 0;
+}
+/* line 53, main.scss */
+.snippetBlockWrapper code {
+  padding: 10px;
+  margin: 0;
+}
+
+/* line 60, main.scss */
+#snippetInputMaskWrapper {
+  position: static;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: grey;
+  z-index: 999;
+  padding: 20px;
+  display: none;
+}
+
+/* line 73, main.scss */
+#domainaddonTemplate {
+  display: none;
+}
+
+/* line 77, main.scss */
+#snippetdata_code_inputWrapper {
+  position: relative;
+  height: 500px;
+  float: none;
+  clear: both;
+}
+/* line 85, main.scss */
+#snippetdata_code_inputWrapper #snippetdata_code_input {
+  position: absolute;
+  top: 0;
+  right: 0;
+  bottom: 0;
+  left: 0;
+}
+
+/* line 94, main.scss */
+.cueditorEdit {
+  height: 300px;
+}
