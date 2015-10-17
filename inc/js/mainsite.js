@@ -33,9 +33,9 @@ require(['requirejs_common'], function () {
             editorEdit.setTheme("ace/theme/twilight");
             editorEdit.session.setMode("ace/mode/javascript");
             editorEdit.commands.addCommand({
-                name   : 'myCommand',
+                name: 'myCommand',
                 bindKey: {win: 'Ctrl-S', mac: 'Command-S'},
-                exec   : function (editorEdit) {
+                exec: function (editorEdit) {
 
                 }
                 //    readOnly: true // false if this command should not apply in readOnly mode
@@ -46,9 +46,9 @@ require(['requirejs_common'], function () {
             editorAdd.setTheme("ace/theme/twilight");
             editorAdd.session.setMode("ace/mode/javascript");
             editorAdd.commands.addCommand({
-                name   : 'myCommand',
+                name: 'myCommand',
                 bindKey: {win: 'Ctrl-S', mac: 'Command-S'},
-                exec   : function (editorAdd) {
+                exec: function (editorAdd) {
 
                 }
                 //    readOnly: true // false if this command should not apply in readOnly mode
@@ -57,23 +57,22 @@ require(['requirejs_common'], function () {
             $(document).ready(function () {
                 //var hljs = new myhljs();
 
-                //console.log('wert: ' + myhljs);
-            });
+                //noinspection JSUnusedAssignment
+                showSnippet = new ShowSnippet();
+                //noinspection JSUnusedAssignment
+                inlineInputFieldsHandler = new InlineInputFieldsHandler(editorAdd, editorEdit);
+                //noinspection JSUnusedAssignment
+                addSnippetManager = new AddSnippetManager();
+                //noinspection JSUnusedAssignment
+                deleteSnippetManager = new DeleteSnippetManager();
+                //noinspection JSUnusedAssignment
+                snippetUpdateManager = new SnippetUpdateManager(editorEdit);
+                //noinspection JSUnusedAssignment
+                copySnippet = new CopySnippet();
+                //noinspection JSUnusedAssignment
+                searchSnippetManager = new SearchSnippetManager();
 
-            //noinspection JSUnusedAssignment
-            showSnippet = new ShowSnippet();
-            //noinspection JSUnusedAssignment
-            inlineInputFieldsHandler = new InlineInputFieldsHandler(editorAdd, editorEdit);
-            //noinspection JSUnusedAssignment
-            addSnippetManager = new AddSnippetManager();
-            //noinspection JSUnusedAssignment
-            deleteSnippetManager = new DeleteSnippetManager();
-            //noinspection JSUnusedAssignment
-            snippetUpdateManager = new SnippetUpdateManager(editorEdit);
-            //noinspection JSUnusedAssignment
-            copySnippet = new CopySnippet();
-            //noinspection JSUnusedAssignment
-            searchSnippetManager = new SearchSnippetManager();
+            });
 
         });
 });

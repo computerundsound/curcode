@@ -24,33 +24,53 @@ use computerundsound\culibrary\db\mysqli\CuDBi;
  *
  * @package snippet
  */
-class LanguageReader extends Language {
+class LanguageReader extends Language
+{
 
 
-	/**
-	 * @param \computerundsound\culibrary\db\mysqli\CuDBi $cuDBi
-	 */
-	public function __construct(CuDBi $cuDBi) {
-		parent::__construct($cuDBi);
-	}
+    /**
+     * @param \computerundsound\culibrary\db\mysqli\CuDBi $cuDBi
+     */
+    public function __construct(CuDBi $cuDBi)
+    {
+        parent::__construct($cuDBi);
+    }
 
 
-	/**
-	 * @param $languageId
-	 */
-	public function readFromDB($languageId) {
-		$languageResult = $this->dbiObj->selectOneDataSet(self::$tableNameLanguages, 'language_id', $languageId);
-	}
+    /**
+     * @param $languageId
+     */
+    public function readFromDB($languageId)
+    {
+        $languageResult = $this->dbiObj->selectOneDataSet(self::$tableNameLanguages, 'language_id', $languageId);
+    }
 
 
-	/**
-	 * @param $order
-	 *
-	 * @return array
-	 */
-	public function getAllLanguages($order = '') {
-		$languagesArray = $this->dbiObj->selectAsArray(self::$tableNameLanguages, '', $order);
+    /**
+     * @param $order
+     *
+     * @return array
+     */
+    public function getAllLanguages($order = '')
+    {
+        $languagesArray = $this->dbiObj->selectAsArray(self::$tableNameLanguages, '', $order);
 
-		return $languagesArray;
-	}
+        return $languagesArray;
+    }
+
+    /**
+     * @return array
+     */
+    public function getAllLanguagesKeyAsID()
+    {
+        $languageArray = $this->getAllLanguages();
+        $languageArrayKeyAsId = [];
+
+        /** @var array $language */
+        foreach ($languageArray as $language) {
+            $languageArrayKeyAsId[$language['language_id']] = $language;
+        }
+
+        return $languageArrayKeyAsId;
+    }
 }

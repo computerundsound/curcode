@@ -1,15 +1,16 @@
-# Webvorlage #
+# curCode - Code-Snipped-Management by Jörg Wrase | cusp.de
 
-Installationsanleitung:
+## Installation:
 
-Das System holt sich über composer die nötigen Libraries
+1. Copy all Files to your Server
+1. Create an empty database
+1. Import the file *___install/admin_tools_curcode.sql* into your empty Database
+1. Make shure, there is a valid user for your Database
+1. Delete the Folder *___install* on your Server
+1. Copy the file *inc/_close/_config.sample.php* to *inc/_close/_config.php*
+1. Insert your data into the config-File **inc/_close/_config.php* ()
 
-Dazu im Verzeichnis
+Then you are ready.
 
-inc/_close/_composer
-
-einmal
-
-php composer.phar update
-
-ausführen.
+Jörg Wrase
+[http://www.cusp.de](http://www.cusp.de)

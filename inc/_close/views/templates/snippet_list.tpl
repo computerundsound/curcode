@@ -42,7 +42,7 @@
 		<div class="row">
 
 			<div class="col-sm-4">{$snippet->getName()|escape:html}</div>
-			<div class="col-sm-8">Language</div>
+			<div class="col-sm-8">Language: <strong>{$languageArrayKeyAsId[$snippet->getLanguageId()]['name']}</strong></div>
 
 		</div>
 		<div class="row">

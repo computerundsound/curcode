@@ -1,0 +1,3 @@
+AuthName "cusp"
+AuthType Basic
+Require valid-user

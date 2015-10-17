@@ -233,6 +233,9 @@ class Snippet {
 	}
 
 
+	/**
+	 * @return array
+     */
 	public function asArray() {
 
 		$snippetArray = [];
@@ -242,7 +245,7 @@ class Snippet {
 		$snippetArray['language_id']  = $this->languageId;
 		$snippetArray['tags']         = $this->tags;
 		$snippetArray['information']  = $this->information;
-		$snippetArray['code']         = $this->code;
+		$snippetArray['code']         = str_replace(['\n', '\r'], ["\n", ''], $this->code);
 		$snippetArray['date_created'] = $this->dateCreated->format('Y-m-d H:i:s');
 		$snippetArray['last_change']  = $this->lastChange->format('Y-m-d H:i:s');
 

@@ -1,6 +1,6 @@
 {
-    "name": "cusp/projektname",
-    "description": "Projektnamer",
+    "name": "computerundsound/curcode",
+    "description": "curCode - Codemanager by cusp",
     "minimum-stability": "dev",
     "license": "proprietary",
     "authors": [
@@ -9,13 +9,6 @@
             "email": "info@cusp.de"
         }
     ],
-    "repositories": [
-        {
-            "type": "git",
-            "url": "git@github.com:computerundsound/cuLibrary.git"
-        }
-    ],
-
     "autoload": {
         "psr-4": {
             "": "../app/"

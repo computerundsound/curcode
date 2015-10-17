@@ -50,7 +50,7 @@ td, th {
 /* line 47, main.scss */
 .snippetBlockWrapper {
   display: block;
-  max-height: 50px;
+  max-height: 155px;
   margin: 0;
   padding: 0;
 }
