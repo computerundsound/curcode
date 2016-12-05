@@ -19,7 +19,7 @@ $smarty_standard = CuFactoryUtil::create('viewer\MakeView');
 $standards_view_elements_array = [
 	'application_root_HTTP' => $constant_container_coo->getAppRootHTTP(),
 	'path_self' => $constant_container_coo->get_file_path_HTTP(),
-	'project_name' => 'Projektname'
+	'project_name' => 'curCode'
 ];
 
 $content = <<<HTML
