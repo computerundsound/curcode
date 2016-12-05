@@ -2,6 +2,8 @@
 
 define('CU_DEBUGMODUS', false);
 
+define('APP_PASSWORD', 'yourPassword');
+
 /* mysql */
 
 define('DBSERVER', 'localhost');

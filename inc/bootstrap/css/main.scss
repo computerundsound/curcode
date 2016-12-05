@@ -4,17 +4,16 @@
  *
  * Created by IntelliJ IDEA
  *
- * D:/_SERVER/_SELF/web208-cusp/domains/_SUBS_cusp/domainabrechnungen/htdocs/inc/bootstrap/css/main.scss
  */
 @import "compass";
 @import "compass/css3";
+
 @import "../../js/jquery/ui/jquery-ui.min.css";
 @import "../../js/jquery/date-time-picker/jquery.datetimepicker.css";
 @import "../../js/highlight/styles/cusp.css";
 @import "bootstrap.css";
 @import "colors";
-
-$co_linkcolor_danger: #FF0035;
+@import "corrections";
 
 #CuLoader {
   display:    none;
@@ -39,10 +38,6 @@ body {
 td, th {
   vertical-align: top;
 }
-
-//.showCodeBtn {
-//
-//}
 
 .snippetBlockWrapper {
   display:    block;

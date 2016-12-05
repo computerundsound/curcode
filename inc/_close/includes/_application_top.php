@@ -44,11 +44,4 @@ $classConfiguration = [
 
 \computerundsound\culibrary\CuFactoryUtil::setClassConfiguration($classConfiguration);
 
-$ldap_manager_coo = new LDAPManager($constant_container_coo);
-
-if($ldap_manager_coo->is_valid_user() === false) {
-	$ldap_manager_coo->go_to_login_site();
-	exit;
-}
-
 

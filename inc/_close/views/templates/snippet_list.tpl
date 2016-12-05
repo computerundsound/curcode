@@ -41,7 +41,7 @@
 	{foreach $snippetListArray as $snippet}
 		<div class="row">
 
-			<div class="col-sm-4">{$snippet->getName()|escape:html}</div>
+			<div class="col-sm-4"><h3>{$snippet->getName()|escape:html}</h3></div>
 			<div class="col-sm-8">Language: <strong>{$languageArrayKeyAsId[$snippet->getLanguageId()]['name']}</strong></div>
 
 		</div>

@@ -18,6 +18,16 @@ $actionValue = CuNet::get_post('actionValue');
 $error_main_message = null;
 $info_main_message  = null;
 
+
+$login = new \Login([APP_PASSWORD]);
+
+
+
+if ($login->isLoggedIn() !== true) {
+//    header("Location: login.php");
+    exit;
+}
+
 /* Output */
 $smarty_standard->assign('site_title', 'Codemanagement by cu');
 $smarty_standard->assign('cu_reload_preventer', $cu_reload_preventer);
@@ -74,16 +84,10 @@ $smarty_standard->assign('snippetLanguage', $snippetLanguage);
 $snippetSearchString = CuNet::get_post_session_standard_value('snippetSearchString', '');
 $smarty_standard->assign('snippetSearchString', $snippetSearchString);
 
-$content = '';
-
 $snippetListArray = $clientReaderObj->getSnippetList($snippetLanguage, $snippetSearchString)->getSnippetListArray();
+
 
 $smarty_standard->assign('languageArrayKeyAsId', $languageArrayKeyAsID);
 $smarty_standard->assign('snippetListArray', $snippetListArray);
 
-$content .= $smarty_standard->fetch('snippet_edit.tpl');
-$content .= $smarty_standard->fetch('snippet_list.tpl');
-
-$smarty_standard->assign('content', $content);
-
-$smarty_standard->display('standard_wrap.tpl');
+$smarty_standard->display('snipped.tpl');

@@ -5,7 +5,6 @@
  *
  * Created by IntelliJ IDEA
  *
- * D:/_SERVER/_SELF/web208-cusp/domains/_SUBS_cusp/domainabrechnungen/htdocs/inc/bootstrap/css/main.scss
  */
 @import url(../../js/jquery/ui/jquery-ui.min.css);
 @import url(../../js/jquery/date-time-picker/jquery.datetimepicker.css);
@@ -17,9 +16,14 @@
  *
  * Created by IntelliJ IDEA
  *
- * D:/_SERVER/_SELF/web208-cusp/domains/_SUBS_cusp/domainabrechnungen/htdocs/inc/bootstrap/css/colors.scss
  */
-/* line 19, main.scss */
+/* line 4, _corrections.scss */
+.navbar {
+  border-radius: 0 !important;
+  color: white;
+}
+
+/* line 18, main.scss */
 #CuLoader {
   display: none;
   position: absolute;
@@ -32,35 +36,35 @@
   background: url("../../mat/ajax-loader.gif") no-repeat center #000000;
 }
 
-/* line 31, main.scss */
+/* line 30, main.scss */
 .cuHoverPointer {
   cursor: pointer;
 }
 
-/* line 35, main.scss */
+/* line 34, main.scss */
 body {
   display: block;
 }
 
-/* line 39, main.scss */
+/* line 38, main.scss */
 td, th {
   vertical-align: top;
 }
 
-/* line 47, main.scss */
+/* line 42, main.scss */
 .snippetBlockWrapper {
   display: block;
   max-height: 155px;
   margin: 0;
   padding: 0;
 }
-/* line 53, main.scss */
+/* line 48, main.scss */
 .snippetBlockWrapper code {
   padding: 10px;
   margin: 0;
 }
 
-/* line 60, main.scss */
+/* line 55, main.scss */
 #snippetInputMaskWrapper {
   position: static;
   top: 0;
@@ -73,19 +77,19 @@ td, th {
   display: none;
 }
 
-/* line 73, main.scss */
+/* line 68, main.scss */
 #domainaddonTemplate {
   display: none;
 }
 
-/* line 77, main.scss */
+/* line 72, main.scss */
 #snippetdata_code_inputWrapper {
   position: relative;
   height: 500px;
   float: none;
   clear: both;
 }
-/* line 85, main.scss */
+/* line 80, main.scss */
 #snippetdata_code_inputWrapper #snippetdata_code_input {
   position: absolute;
   top: 0;
@@ -94,7 +98,7 @@ td, th {
   left: 0;
 }
 
-/* line 94, main.scss */
+/* line 89, main.scss */
 .cueditorEdit {
   height: 300px;
 }
