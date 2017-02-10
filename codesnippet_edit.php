@@ -1,36 +1,27 @@
 <?php
 
-use computerundsound\culibrary;
-use computerundsound\culibrary\CuFactoryUtil;
-use computerundsound\culibrary\CuNet;
+use computerundsound\culibrary\CuRequester;
+use languages\LanguageReader;
 use snippet\SnippetReader;
 use snippet\SnippetWriter;
 
 require_once __DIR__ . '/inc/_close/includes/_application_viewer.php';
 
-$cu_reload_preventer_coo         = new culibrary\CuReloadPreventer(true);
-$cu_reload_preventer['token']    = $cu_reload_preventer_coo->get_token_new();
-$cu_reload_preventer['variname'] = $cu_reload_preventer_coo->get_vari_name();
-
-$action      = CuNet::get_post('action');
-$actionValue = CuNet::get_post('actionValue');
+$action      = CuRequester::getGetPost('action');
+$actionValue = CuRequester::getGetPost('actionValue');
 
 $error_main_message = null;
 $info_main_message  = null;
 
-
 $login = new \Login([APP_PASSWORD]);
 
-
-
 if ($login->isLoggedIn() !== true) {
-//    header("Location: login.php");
+    header('Location: login.php');
     exit;
 }
 
 /* Output */
-$smarty_standard->assign('site_title', 'Codemanagement by cu');
-$smarty_standard->assign('cu_reload_preventer', $cu_reload_preventer);
+$smarty_standard->assign('site_title', 'Code-Management by cu - www.cusp.de');
 
 $smarty_standard->assign('error_main_message', $error_main_message);
 $smarty_standard->assign('info_main_message', $info_main_message);
@@ -43,8 +34,8 @@ $smarty_standard->assign('js_files', $js_files);
 
 /* Languages */
 
-/** @var \languages\LanguageReader $languageReader */
-$languageReader = CuFactoryUtil::create('languages\LanguageReader');
+$languageReader = new LanguageReader($dbiObj);
+
 /** @var array $languageArray */
 $languageArray        = $languageReader->getAllLanguages('name ASC');
 $languageArrayKeyAsID = $languageReader->getAllLanguagesKeyAsID();
@@ -59,9 +50,9 @@ $smarty_standard->assign('allLanguagesOptionsArray', $languageOptionsArray);
 
 /* Start */
 /** @var SnippetReader $clientReaderObj */
-$clientReaderObj = CuFactoryUtil::create('snippet\SnippetReader');
+$clientReaderObj = new SnippetReader($dbiObj);
 /** @var SnippetWriter $clientWriterObj */
-$clientWriterObj = CuFactoryUtil::create('snippet\SnippetWriter');
+$clientWriterObj = new SnippetWriter($dbiObj);
 
 $snippetDataArray = [];
 
@@ -79,13 +70,12 @@ if ($action === 'deleteSnippet' && !empty($actionValue)) {
 }
 /* Read Content */
 
-$snippetLanguage = CuNet::get_post_session_standard_value('snippet_language', 0);
+$snippetLanguage = CuRequester::getGetOrPostSessionStandardValue('snippet_language', 0);
 $smarty_standard->assign('snippetLanguage', $snippetLanguage);
-$snippetSearchString = CuNet::get_post_session_standard_value('snippetSearchString', '');
+$snippetSearchString = CuRequester::getGetOrPostSessionStandardValue('snippetSearchString', '');
 $smarty_standard->assign('snippetSearchString', $snippetSearchString);
 
 $snippetListArray = $clientReaderObj->getSnippetList($snippetLanguage, $snippetSearchString)->getSnippetListArray();
-
 
 $smarty_standard->assign('languageArrayKeyAsId', $languageArrayKeyAsID);
 $smarty_standard->assign('snippetListArray', $snippetListArray);

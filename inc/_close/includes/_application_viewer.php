@@ -8,18 +8,17 @@
  *
  */
 
-use computerundsound\culibrary\CuFactoryUtil;
 use viewer\MakeView;
 
-require_once '_application_top.php';
+require_once __DIR__ . '/_application_top.php';
 
 /** @var MakeView $smarty_standard */
-$smarty_standard = CuFactoryUtil::create('viewer\MakeView');
+$smarty_standard = new MakeView(CU_SMARTY_DIR);
 
 $standards_view_elements_array = [
-	'application_root_HTTP' => $constant_container_coo->getAppRootHTTP(),
-	'path_self' => $constant_container_coo->get_file_path_HTTP(),
-	'project_name' => 'curCode'
+    'application_root_HTTP' => $constant_container_coo->getAppRootHTTP(),
+    'path_self'             => $constant_container_coo->getFilePath_HTTP(),
+    'project_name'          => 'curCode',
 ];
 
 $content = <<<HTML

@@ -1,12 +1,11 @@
 <?php
-/*
+/**
  * Copyright by Jörg Wrase - www.Computer-Und-Sound.de
- * Date: 11.05.2015
- * Time: 21:51
- * 
- * Created by IntelliJ IDEA
+ * Hire me! coder@cusp.de
  *
+ * LastModified: 2017.02.04 at 23:47 MEZ
  */
+
 namespace computerundsound\culibrary;
 
 /**
@@ -14,73 +13,140 @@ namespace computerundsound\culibrary;
  *
  * @package curlibrary
  */
-class CuMiniTemplateEngine {
+class CuMiniTemplateEngine
+{
 
-	private $variablesForTemplate = [];
+    private $variablesForTemplate = [];
 
-	private $templateFolder = '';
+    private $templateFolder = '';
 
+    /**
+     * CuMiniTemplateEngine constructor.
+     *
+     * @param string $templateFolder
+     *
+     * @throws \DomainException
+     */
+    public function __construct($templateFolder) {
 
-	/**
-	 * @param $templateFolder
-	 */
-	public function setTemplateFolder($templateFolder) {
-
-		if(is_dir($templateFolder) === false) {
-			throw new \DomainException("Templatefolder $templateFolder not found");
-		}
-
-		$this->templateFolder = $templateFolder;
-	}
-
-
-	/**
-	 * @param $name
-	 * @param $value
-	 */
-	public function assign($name, $value) {
-		$this->variablesForTemplate[$name] = $value;
-	}
+        $this->setTemplateFolder($templateFolder);
+    }
 
 
-	/**
-	 * @param $template
-	 */
-	public function display($template) {
+    /**
+     * @param $templateFolder
+     *
+     * @throws \DomainException
+     */
+    public function setTemplateFolder($templateFolder) {
 
-		/** @noinspection PhpIncludeInspection */
-		include($this->templateFolder . $template . '.php');
-	}
+        if (is_dir($templateFolder) === false) {
+            throw new \DomainException("Template-Folder $templateFolder not found");
+        }
 
-
-	/**
-	 * @param $name
-	 *
-	 * @return mixed
-	 */
-	public function getValue($name) {
-
-		$returnValue = '';
-
-		if(array_key_exists($name, $this->variablesForTemplate)) {
-			$returnValue = $this->variablesForTemplate[$name];
-		}
-
-		return $returnValue;
-	}
+        $this->templateFolder = $templateFolder;
+    }
 
 
-	/**
-	 * @param      $name
-	 * @param bool $html
-	 */
-	public function showValue($name, $html = false) {
-		$value = $this->getValue($name);
+    /**
+     * @param $name
+     * @param $value
+     */
+    public function assign($name, $value) {
 
-		if($html) {
-			$value = htmlspecialchars($html, ENT_COMPAT, 'utf-8');
-		}
+        $this->variablesForTemplate[$name] = $value;
+    }
 
-		echo $value;
-	}
+    /**
+     * @param $template
+     *
+     * @throws \DomainException
+     */
+    public function display($template) {
+
+        $content = $this->fetch($template);
+
+        echo $content;
+    }
+
+    /**
+     * @param string $template
+     * @param bool   $clearAssignments
+     *
+     * @return string
+     * @throws \DomainException
+     */
+    public function fetch($template, $clearAssignments = true) {
+
+        extract($this->variablesForTemplate, EXTR_SKIP);
+
+        $template = $this->templateFolder . $template . '.template.php';
+
+        if (file_exists($template) === false) {
+            throw new \DomainException('Template not found in ' . $template);
+        }
+
+        ob_start();
+
+        /** @noinspection PhpIncludeInspection */
+        include $template;
+
+        $content = ob_get_contents();
+        ob_end_clean();
+
+        if ($clearAssignments) {
+            $this->variablesForTemplate = [];
+        }
+
+        return $content;
+    }
+
+    /**
+     * @param      $name
+     * @param bool $html
+     */
+    public function showValue($name, $html = true) {
+
+        $value = $this->getValue($name);
+
+        if ($html) {
+            $value = $this->getAsHtml($value);
+        }
+
+        echo $value;
+    }
+
+    /**
+     * @param $name
+     *
+     * @return mixed
+     */
+    public function getValue($name) {
+
+        $returnValue = '';
+
+        if (array_key_exists($name, $this->variablesForTemplate)) {
+            $returnValue = $this->variablesForTemplate[$name];
+        }
+
+        return $returnValue;
+    }
+
+    /**
+     * @param string $value
+     *
+     * @return string
+     */
+    private function getAsHtml($value) {
+
+        return htmlspecialchars($value, ENT_COMPAT, 'utf-8');
+    }
+
+    /**
+     * @param string $value
+     */
+    public function showAsHtml($value) {
+
+        echo $this->getAsHtml($value);
+    }
 }

@@ -1,71 +1,63 @@
 <?php
-/*
- * Copyright by J�rg Wrase - www.Computer-Und-Sound.de
- * Date: 10.05.2015
- * Time: 23:24
- * 
- * Created by IntelliJ IDEA
+/**
+ * Copyright by Jörg Wrase - www.Computer-Und-Sound.de
+ * Hire me! coder@cusp.de
  *
+ * LastModified: 2017.02.05 at 06:53 MEZ
  */
 
-use computerundsound\culibrary\CuFactoryUtil;
-use computerundsound\culibrary\CuMiniTemplateEngine;
-use computerundsound\culibrary\db\pdo\CuDBpdo;
-use computerundsound\culibrary\db\pdo\CuDBpdoResult;
+use computerundsound\culibrary\db\mysqli\CuDBiResult;
 
-require_once '../CuFactory.php';
+require_once __DIR__ . '/includes/application.inc.php';
 
-require_once '../db/CuDB.php';
-require_once '../db/CuDBResult.php';
+$message = 'DB-Example';
 
-require_once '../db/mysqli/CuDBi.php';
-require_once '../db/mysqli/CuDBiResult.php';
+/** @var \computerundsound\culibrary\db\mysqli\CuDBi $cuDBi */
+$cuDBi = \computerundsound\culibrary\db\mysqli\CuDBi::getInstance(new CuDBiResult(),
+                                                                  DB_SERVER,
+                                                                  DB_USERNAME,
+                                                                  DB_PASSWORD,
+                                                                  DB_DB_NAME);
 
-require_once '../db/pdo/CuDBpdo.php';
-require_once '../db/pdo/CuDBpdoResult.php';
+$message =
+    $cuDBi->connect_errno ? 'You need a DB to test the code in the Template: ' . $cuDBi->connect_error : $message;
 
-$username = 'peng';
-$password = 'peng';
-$server   = 'localhost';
-$dbName   = 'test';
+/** @noinspection UnNecessaryDoubleQuotesInspection */
+$createTestTable = <<<'SQL'
+CREATE TABLE IF NOT EXISTS test
+(
+    id INT(11) PRIMARY KEY NOT NULL AUTO_INCREMENT,
+    value VARCHAR(255) NOT NULL,
+    info VARCHAR(255) NOT NULL,
+    created DATETIME NOT NULL
+);
+SQL;
 
-$message = '';
+$cuDBi->cuQuery($createTestTable);
 
-/** @var CuDBpdo $mySqlObj */
-$mySqlObj = CuDBpdo::getInstance(new CuDBpdoResult(), $server, $username, $password, $dbName);
+$rand = mt_rand(0, 1000);
 
-$ret = $mySqlObj->getAttribute(PDO::ATTR_CLIENT_VERSION);
+$insert = [
 
-$tableName = 'testtable';
+    'value'   => 'one Value: ' . $rand,
+    'info'    => 'one Info: ' . $rand,
+    'created' => date('Y-m-d H:i:s'),
 
-$dataInsertArray = ['vorname' => 'Kimbertimber', 'name' => 'Limberbimber', 'ort' => 'Zauberhausen'];
+];
 
-$mySqlObj->cuDelete($tableName, 'vorname LIKE \'Kimber%\'');
+$cuDBi->cuInsert('test', $insert);
 
-$mySqlObj->cuInsert($tableName, $dataInsertArray);
+$valuesInDB = $cuDBi->selectAsArray('test', '', 'created ASC');
 
-$dataUpdateArray = ['vorname' => 'Kimbertimber' . time()];
-$mySqlObj->cuUpdate($tableName, $dataUpdateArray, '`vorname` LIKE \'Kimbertimber%\' LIMIT 2');
+$view->assign('valuesInDB', $valuesInDB);
 
-$message = 'Hier die Message';
+//* ************************** Template Output *************************************************/
 
-$countDataSets = $mySqlObj->getQuantityOfDataSets($tableName);
+$view->assign('title', 'DB-Example');
 
-$message = (string)$countDataSets;
+$view->assign('message', $message);
 
-/* ************************** Template ausgabe *************************************************/
-$dataArray = $mySqlObj->selectAsArray($tableName);
+$content = $view->fetch('dbtest');
 
-require_once '../CuMiniTemplateEngine.php';
-
-/** @var CuMiniTemplateEngine $cuMTE */
-$cuMTE = CuFactoryUtil::create('curlibrary\CuMiniTemplateEngine');
-
-$cuMTE->setTemplateFolder(__DIR__ . '/_templates/');
-
-$cuMTE->assign('Title', 'Hier der Titel');
-$cuMTE->assign('resultArray', $dataArray);
-
-$cuMTE->assign('message', $message);
-
-$cuMTE->display('dbtest');
+$view->assign('content', $content);
+$view->display('wrapper');

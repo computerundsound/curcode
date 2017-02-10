@@ -1,11 +1,9 @@
 <?php
-/*
+/**
  * Copyright by Jörg Wrase - www.Computer-Und-Sound.de
- * Date: 08.06.2015
- * Time: 22:28
- * 
- * Created by IntelliJ IDEA
+ * Hire me! coder@cusp.de
  *
+ * LastModified: 2017.02.10 at 03:37 MEZ
  */
 
 namespace snippet;
@@ -18,48 +16,34 @@ use computerundsound\culibrary\db\mysqli\CuDBi;
  *
  * @package \snippet
  */
-trait SnippetTrait {
+trait SnippetTrait
+{
 
-	protected static $fieldsInDBToUpdate = ['language_id', 'name', 'tags', 'information', 'code', 'last_change'];
+    protected static $fieldsInDBToUpdate = ['language_id', 'name', 'tags', 'information', 'code', 'last_change'];
 
-	/** @var string */
-	protected static $clientTableName = 'codesnippets';
-	/**
-	 * @var \computerundsound\culibrary\db\mysqli\CuDBi
-	 */
-	protected $cuDBi;
-	/**
-	 * @var Snippet
-	 */
-	protected $snippetTemplate;
-	/**
-	 * @var SnippetList
-	 */
-	protected $snippetList;
-	/**
-	 * @var \computerundsound\culibrary\DateTimeCu
-	 */
-	protected $dateTimeCuTemplate;
+    /** @var string */
+    protected static $clientTableName = 'codesnippets';
+    /**
+     * @var \computerundsound\culibrary\db\mysqli\CuDBi
+     */
+    protected $cuDBi;
+
+    /** @var  SnippetList */
+    protected $snippetList;
 
 
-	/**
-	 * @param \computerundsound\culibrary\db\mysqli\CuDBi $cuDBi
-	 * @param Snippet                                     $snippetTemplate
-	 * @param SnippetList                                 $snippetList
-	 * @param \computerundsound\culibrary\DateTimeCu      $dateTimeCuTemplate
-	 */
-	public function __construct(CuDBi $cuDBi,
-	                            Snippet $snippetTemplate,
-	                            SnippetList $snippetList,
-	                            DateTimeCu $dateTimeCuTemplate) {
+    /**
+     * @param \computerundsound\culibrary\db\mysqli\CuDBi $cuDBi
+     */
+    public function __construct(
+        CuDBi $cuDBi
+    ) {
 
-		$this->cuDBi              = $cuDBi;
-		$this->snippetTemplate    = clone $snippetTemplate;
-		$this->snippetList        = $snippetList;
-		$this->dateTimeCuTemplate = clone $dateTimeCuTemplate;
-	}
+        $this->snippetList = new SnippetList();
+        $this->cuDBi       = $cuDBi;
+    }
 
 
-	public function getFieldsArray() {
-	}
+    public function getFieldsArray() {
+    }
 }

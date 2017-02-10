@@ -1,6 +1,6 @@
 @charset "UTF-8";
 /*
- * Copyright J├Ârg Wrase www.computer-und-sound.de
+ * Copyright Jrg Wrase www.computer-und-sound.de
  * 30.11.14 01:53
  *
  * Created by IntelliJ IDEA
@@ -23,7 +23,7 @@
   color: white;
 }
 
-/* line 18, main.scss */
+/* line 17, main.scss */
 #CuLoader {
   display: none;
   position: absolute;
@@ -36,35 +36,35 @@
   background: url("../../mat/ajax-loader.gif") no-repeat center #000000;
 }
 
-/* line 30, main.scss */
+/* line 29, main.scss */
 .cuHoverPointer {
   cursor: pointer;
 }
 
-/* line 34, main.scss */
+/* line 33, main.scss */
 body {
   display: block;
 }
 
-/* line 38, main.scss */
+/* line 37, main.scss */
 td, th {
   vertical-align: top;
 }
 
-/* line 42, main.scss */
+/* line 41, main.scss */
 .snippetBlockWrapper {
   display: block;
   max-height: 155px;
   margin: 0;
   padding: 0;
 }
-/* line 48, main.scss */
+/* line 47, main.scss */
 .snippetBlockWrapper code {
   padding: 10px;
   margin: 0;
 }
 
-/* line 55, main.scss */
+/* line 54, main.scss */
 #snippetInputMaskWrapper {
   position: static;
   top: 0;
@@ -77,19 +77,19 @@ td, th {
   display: none;
 }
 
-/* line 68, main.scss */
+/* line 67, main.scss */
 #domainaddonTemplate {
   display: none;
 }
 
-/* line 72, main.scss */
+/* line 71, main.scss */
 #snippetdata_code_inputWrapper {
   position: relative;
   height: 500px;
   float: none;
   clear: both;
 }
-/* line 80, main.scss */
+/* line 79, main.scss */
 #snippetdata_code_inputWrapper #snippetdata_code_input {
   position: absolute;
   top: 0;
@@ -98,7 +98,7 @@ td, th {
   left: 0;
 }
 
-/* line 89, main.scss */
+/* line 88, main.scss */
 .cueditorEdit {
   height: 300px;
 }

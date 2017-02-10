@@ -7,7 +7,6 @@
  */
 @import "compass";
 @import "compass/css3";
-
 @import "../../js/jquery/ui/jquery-ui.min.css";
 @import "../../js/jquery/date-time-picker/jquery.datetimepicker.css";
 @import "../../js/highlight/styles/cusp.css";
@@ -16,73 +15,73 @@
 @import "corrections";
 
 #CuLoader {
-  display:    none;
-  position:   absolute;
-  top:        0;
-  left:       0;
-  width:      100%;
-  height:     100%;
-  z-index:    9999;
-  opacity:    0.75;
-  background: url("../../mat/ajax-loader.gif") no-repeat center #000000;
+  display    : none;
+  position   : absolute;
+  top        : 0;
+  left       : 0;
+  width      : 100%;
+  height     : 100%;
+  z-index    : 9999;
+  opacity    : 0.75;
+  background : url("../../mat/ajax-loader.gif") no-repeat center #000000;
 }
 
 .cuHoverPointer {
-  cursor: pointer;
+  cursor : pointer;
 }
 
 body {
-  display: block;
+  display : block;
 }
 
 td, th {
-  vertical-align: top;
+  vertical-align : top;
 }
 
 .snippetBlockWrapper {
-  display:    block;
-  max-height: 155px;
-  margin:     0;
-  padding:    0;
+  display    : block;
+  max-height : 155px;
+  margin     : 0;
+  padding    : 0;
 
   code {
-	padding: 10px;
-	margin:  0;
-  }
 
+    padding : 10px;
+    margin  : 0;
+  }
 }
 
 #snippetInputMaskWrapper {
-  position:   static;
-  top:        0;
-  left:       0;
-  width:      100%;
-  height:     100%;
-  background: grey;
-  z-index:    999;
-  padding:    20px;
-  display:    none;
+  position   : static;
+  top        : 0;
+  left       : 0;
+  width      : 100%;
+  height     : 100%;
+  background : grey;
+  z-index    : 999;
+  padding    : 20px;
+  display    : none;
 
 }
 
 #domainaddonTemplate {
-  display: none;
+  display : none;
 }
 
 #snippetdata_code_inputWrapper {
 
-  position: relative;
+  position : relative;
   //  width: ;
-  height:   500px;
-  float:    none;
-  clear:    both;
+  height   : 500px;
+  float    : none;
+  clear    : both;
 
   #snippetdata_code_input {
-	position: absolute;
-	top:      0;
-	right:    0;
-	bottom:   0;
-	left:     0;
+    position : absolute;
+    top      : 0;
+    right    : 0;
+    bottom   : 0;
+    left     : 0;
   }
 }
 
@@ -93,5 +92,5 @@ td, th {
   //bottom:   0;
   //left:     0;
 
-  height: 300px;
+  height : 300px;
 }

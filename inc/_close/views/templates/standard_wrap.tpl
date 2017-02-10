@@ -25,9 +25,8 @@
 <div id="CuLoader">&nbsp;</div>
 
 <form action="" method="post" enctype="application/x-www-form-urlencoded" name="form_action">
-    <input type="hidden" name="action"/> <input type="hidden" name="action_id"/> <input type="hidden"
-                                                                                        name="{$cu_reload_preventer.variname}"
-                                                                                        value="{$cu_reload_preventer.token}"/>
+    <input type="hidden" name="action"/>
+    <input type="hidden" name="action_id"/>
 </form>
 
 {*<div class="bb-alert alert alert-info" style="display:none;">*}

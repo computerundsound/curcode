@@ -1,12 +1,9 @@
 <?php
 /**
  * Copyright by Jörg Wrase - www.Computer-Und-Sound.de
- * Date: 25.11.2014
- * Time: 23:41
+ * Hire me! coder@cusp.de
  *
- * Created by IntelliJ IDEA
- *
- * Filename: SnippetWriter.php
+ * LastModified: 2017.02.10 at 03:40 MEZ
  */
 
 namespace snippet;
@@ -28,8 +25,7 @@ class SnippetWriter {
 	 */
 	public function update(array $snippetDataArray) {
 
-		$lastChange = clone $this->dateTimeCuTemplate;
-		$lastChange->init();
+		$lastChange = new \DateTime();
 
 		$snippetId = $snippetDataArray['snippet_id'];
 

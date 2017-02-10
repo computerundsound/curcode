@@ -1,12 +1,9 @@
 <?php
 /**
  * Copyright by Jörg Wrase - www.Computer-Und-Sound.de
- * Date: 25.11.2014
- * Time: 23:41
+ * Hire me! coder@cusp.de
  *
- * Created by IntelliJ IDEA
- *
- * Filename: SnippetWriter.php
+ * LastModified: 2017.02.10 at 03:45 MEZ
  */
 
 namespace snippet;
@@ -16,104 +13,105 @@ namespace snippet;
  *
  * @package snippet
  */
-class SnippetReader {
+class SnippetReader
+{
 
-	use SnippetTrait;
-
-
-	/**
-	 * @param int    $snippetLanguageID
-	 * @param string $snippetSearchString
-	 * @param string $order
-	 *
-	 * @return \snippet\SnippetList
-	 */
-	public function getSnippetList($snippetLanguageID, $snippetSearchString, $order = 'name ASC') {
-
-		$where = $this->buildWhereString($snippetLanguageID, $snippetSearchString);
-
-		$snippetArray = $this->cuDBi->selectAsArray(self::$clientTableName, $where, $order);
-
-		$this->snippetList->reset();
-
-		foreach($snippetArray as $snippetData) {
-			$snippet = $this->fillSnippet($snippetData);
-			$this->snippetList->addSnippet($snippet);
-		}
-
-		return $this->snippetList;
-	}
+    use SnippetTrait;
 
 
-	/**
-	 * @param $snippetId
-	 *
-	 * @return \snippet\Snippet
-	 */
-	public function readFromDB($snippetId) {
+    /**
+     * @param int    $snippetLanguageID
+     * @param string $snippetSearchString
+     * @param string $order
+     *
+     * @return \snippet\SnippetList
+     */
+    public function getSnippetList($snippetLanguageID, $snippetSearchString, $order = 'name ASC') {
 
-		$snippetArray = $this->cuDBi->selectOneDataSet(self::$clientTableName, 'snippet_id', $snippetId);
+        $where = $this->buildWhereString($snippetLanguageID, $snippetSearchString);
 
-		$snippet = $this->fillSnippet($snippetArray);
+        $snippetArray = $this->cuDBi->selectAsArray(self::$clientTableName, $where, $order);
 
-		return $snippet;
-	}
+        $this->snippetList->reset();
+
+        foreach ($snippetArray as $snippetData) {
+            $snippet = $this->fillSnippet($snippetData);
+            $this->snippetList->addSnippet($snippet);
+        }
+
+        return $this->snippetList;
+    }
 
 
-	/**
-	 * @param int    $snippetLanguageID
-	 * @param string $snippetSearchString
-	 *
-	 * @return string
-	 */
-	protected function buildWhereString($snippetLanguageID, $snippetSearchString) {
-		$where = '';
+    /**
+     * @param $snippetId
+     *
+     * @return \snippet\Snippet
+     */
+    public function readFromDB($snippetId) {
 
-		if($snippetLanguageID > 0) {
-			$where .= " language_id = $snippetLanguageID ";
-		}
+        $snippetArray = $this->cuDBi->selectOneDataSet(self::$clientTableName, 'snippet_id', $snippetId);
 
-		if($snippetSearchString !== '') {
+        $snippet = $this->fillSnippet($snippetArray);
 
-			if($where !== '') {
-				$where .= ' AND ';
-			}
+        return $snippet;
+    }
 
-			$where .= "
+
+    /**
+     * @param int    $snippetLanguageID
+     * @param string $snippetSearchString
+     *
+     * @return string
+     */
+    protected function buildWhereString($snippetLanguageID, $snippetSearchString) {
+
+        $where = '';
+
+        if ($snippetLanguageID > 0) {
+            $where .= " language_id = $snippetLanguageID ";
+        }
+
+        if ($snippetSearchString !== '') {
+
+            if ($where !== '') {
+                $where .= ' AND ';
+            }
+
+            $where .= "
 			(name LIKE '%$snippetSearchString%' OR
 			tags LIKE '%$snippetSearchString%' OR
 			information LIKE '%$snippetSearchString%' OR
 			code LIKE '%$snippetSearchString%')
 		";
-		}
+        }
 
-		return $where;
-	}
+        return $where;
+    }
 
 
-	/**
-	 * @param array $snippetData
-	 *
-	 * @return \snippet\Snippet
-	 */
-	protected function fillSnippet(array $snippetData) {
-		$snippet = clone $this->snippetTemplate;
+    /**
+     * @param array $snippetData
+     *
+     * @return \snippet\Snippet
+     */
+    protected function fillSnippet(array $snippetData) {
 
-		$snippet->setSnippetId($snippetData['snippet_id']);
-		$snippet->setLanguageId($snippetData['language_id']);
-		$snippet->setName($snippetData['name']);
-		$snippet->setTags($snippetData['tags']);
-		$snippet->setInformation($snippetData['information']);
-		$snippet->setCode($snippetData['code']);
+        $snippet = new Snippet();
 
-		$dateCreated = clone $this->dateTimeCuTemplate;
-		$dateCreated->init($snippetData['date_created']);
-		$snippet->setDateCreated($dateCreated);
+        $snippet->setSnippetId($snippetData['snippet_id']);
+        $snippet->setLanguageId($snippetData['language_id']);
+        $snippet->setName($snippetData['name']);
+        $snippet->setTags($snippetData['tags']);
+        $snippet->setInformation($snippetData['information']);
+        $snippet->setCode($snippetData['code']);
 
-		$dateLastChange = clone $this->dateTimeCuTemplate;
-		$dateLastChange->init($snippetData['last_change']);
-		$snippet->setLastChange($dateLastChange);
+        $dateCreated = new \DateTime();
+        $snippet->setDateCreated($dateCreated);
 
-		return $snippet;
-	}
+        $dateLastChange = new \DateTime();
+        $snippet->setLastChange($dateLastChange);
+
+        return $snippet;
+    }
 }

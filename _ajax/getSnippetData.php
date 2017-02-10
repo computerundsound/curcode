@@ -1,30 +1,27 @@
 <?php
-/*
+/**
  * Copyright by Jörg Wrase - www.Computer-Und-Sound.de
- * Date: 06.06.2015
- * Time: 13:41
- * 
- * Created by IntelliJ IDEA
+ * Hire me! coder@cusp.de
  *
+ * LastModified: 2017.02.10 at 04:07 MEZ
  */
 
-use computerundsound\culibrary\CuNet;
-use computerundsound\culibrary\CuFactoryUtil;
+use computerundsound\culibrary\CuRequester;
 
-require_once '../inc/_close/includes/_application_top.php';
+require_once __DIR__ . '/../inc/_close/includes/_application_top.php';
 
 header('Content-Type: text/plain;CharSet: utf-8');
 
-$snippetId = CuNet::get_post('snippet_id');
+$snippetId = CuRequester::getGetPost('snippet_id');
 
-if(empty($snippetId)) {
-	die('no data');
+if (empty($snippetId)) {
+    die('no data');
 }
 
 /* ******************* START **************************/
 
 /** @var \snippet\SnippetReader $snippetReader */
-$snippetReader = CuFactoryUtil::create('snippet\SnippetReader');
+$snippetReader = new \snippet\SnippetReader($dbiObj);
 
 $snippet = $snippetReader->readFromDB($snippetId);
 

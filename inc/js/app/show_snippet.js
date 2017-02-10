@@ -15,18 +15,39 @@ define(['jquery'], function ($) {
             that = {},
             $btnSwitch;
 
-        /*  */
-
         constructor = function () {
 
             $btnSwitch = $('.switchSnippetBlockWrapper');
 
             $(document).ready(function () {
 
+                var maxHeight;
+                var textOn  = "Show Snipped";
+                var textOff = "Show Small"
+
                 $btnSwitch.on('click', function () {
 
                     var $shownElement = $(this).parent().find('pre');
-                    $shownElement.css('max-height', 'none');
+                    var className     = 'showComplete';
+                    var $button       = $(this);
+
+                    if (maxHeight === undefined) {
+
+                        maxHeight = $shownElement.css('max-height');
+                    }
+
+                    if ($shownElement.hasClass(className)) {
+                        $shownElement.removeClass(className);
+                        $shownElement.css('max-height', maxHeight);
+
+                        $button.html(textOn);
+                    } else {
+                        $shownElement.addClass(className);
+                        $shownElement.css('max-height', 'none');
+
+                        $button.html(textOff);
+
+                    }
 
                 });
             });

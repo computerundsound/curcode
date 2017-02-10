@@ -1,11 +1,9 @@
 <?php
-/*
+/**
  * Copyright by Jörg Wrase - www.Computer-Und-Sound.de
- * Date: 08.06.2015
- * Time: 17:11
- * 
- * Created by IntelliJ IDEA
+ * Hire me! coder@cusp.de
  *
+ * LastModified: 2017.02.10 at 03:35 MEZ
  */
 namespace snippet;
 
@@ -20,16 +18,6 @@ class SnippetList {
 	/**
 	 * @var \snippet\Snippet
 	 */
-	private $snippetTemplate;
-
-
-	/**
-	 * @param \snippet\Snippet $snippetTemplate
-	 */
-	public function __construct(Snippet $snippetTemplate) {
-
-		$this->snippetTemplate = clone $snippetTemplate;
-	}
 
 
 	/**

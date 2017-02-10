@@ -12,7 +12,7 @@ define(['jquery'], function ($) {
     //noinspection UnnecessaryLocalVariableJS
     var SnippetUpdateManager = function (editorEdit) {
         var constructor,
-            myPublic = {},
+            myPublic  = {},
             myPrivate = {};
 
         /*  */
@@ -29,13 +29,13 @@ define(['jquery'], function ($) {
                     $('#cuEditMask').modal('show');
 
 
-
                     $('input[name="snippetdata[snippet_id]"]').val(snippetID);
                     $('input[name="snippetdata[snippet_name]"]').val(data.name);
                     $('textarea[name="snippetdata[snippet_information]"]').val(data.information);
                     $('textarea[name="snippetdata[snippet_tags]"]').val(data.tags);
-                    $('select[name="snippetdata[snippet_language_id]"] option[value="' + data.language_id + '"]').attr('selected',
-                        true);
+                    $('select[name="snippetdata[snippet_language_id]"] option[value="' + data.language_id + '"]')
+                        .attr('selected',
+                              true);
                     editorEdit.setValue('');
                     editorEdit.insert(data.code);
                     //$('input[name="snippetdata[snippet_id]"]').val(data.snippet_id);

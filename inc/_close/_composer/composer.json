@@ -14,9 +14,8 @@
             "": "../app/"
         }
     },
-
     "require": {
-        "computerundsound/culibrary": "dev-2.0_release",
+        "computerundsound/culibrary": "3.0.*",
         "4nd/smarty": "v3.1.18",
         "phpmailer/phpmailer": "v5.2.8"
     }

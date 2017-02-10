@@ -1,19 +1,11 @@
 <?php
 
-use computerundsound\culibrary;
-use computerundsound\culibrary\CuFactoryUtil;
-use computerundsound\culibrary\CuNet;
-use snippet\SnippetReader;
-use snippet\SnippetWriter;
+use computerundsound\culibrary\CuRequester;
 
 require_once __DIR__ . '/inc/_close/includes/_application_viewer.php';
 
-$cu_reload_preventer_coo         = new culibrary\CuReloadPreventer(true);
-$cu_reload_preventer['token']    = $cu_reload_preventer_coo->get_token_new();
-$cu_reload_preventer['variname'] = $cu_reload_preventer_coo->get_vari_name();
-
-$action      = CuNet::get_post('action');
-$actionValue = CuNet::get_post('actionValue');
+$action      = CuRequester::getGetPost('action');
+$actionValue = CuRequester::getGetPost('actionValue');
 
 $error_main_message = null;
 $info_main_message  = null;
@@ -34,7 +26,6 @@ if ($login->isLoggedIn()) {
 
 /* Output */
 $smarty_standard->assign('site_title', 'Codemanagement by cu');
-$smarty_standard->assign('cu_reload_preventer', $cu_reload_preventer);
 
 $smarty_standard->assign('error_main_message', $error_main_message);
 $smarty_standard->assign('info_main_message', $info_main_message);

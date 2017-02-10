@@ -17,7 +17,7 @@
         "require": {
             "php": ">=5.2"
         },
-        "time": "2014-04-07 21:22:04",
+        "time": "2014-04-07T21:22:04+00:00",
         "type": "library",
         "installation-source": "dist",
         "autoload": {
@@ -73,7 +73,7 @@
             "phpdocumentor/phpdocumentor": "*",
             "phpunit/phpunit": "4.0.*"
         },
-        "time": "2014-05-14 07:04:18",
+        "time": "2014-05-14T07:04:18+00:00",
         "type": "library",
         "installation-source": "dist",
         "autoload": {
@@ -108,21 +108,34 @@
     },
     {
         "name": "computerundsound/culibrary",
-        "version": "dev-2.0_release",
-        "version_normalized": "dev-2.0_release",
+        "version": "3.0.1",
+        "version_normalized": "3.0.1.0",
         "source": {
             "type": "git",
-            "url": "git@github.com:computerundsound/cuLibrary.git",
-            "reference": "ccd4beec870b5dfa14ebfe780900766fbebe85ea"
+            "url": "https://github.com/computerundsound/cuLibrary.git",
+            "reference": "c9e4835776f1b07179e7ecf9793c337a49d170f4"
         },
-        "time": "2015-05-22 07:13:41",
+        "dist": {
+            "type": "zip",
+            "url": "https://api.github.com/repos/computerundsound/cuLibrary/zipball/c9e4835776f1b07179e7ecf9793c337a49d170f4",
+            "reference": "c9e4835776f1b07179e7ecf9793c337a49d170f4",
+            "shasum": ""
+        },
+        "require": {
+            "php": ">=5.4.0"
+        },
+        "time": "2017-02-10T01:56:40+00:00",
         "type": "library",
-        "installation-source": "source",
+        "installation-source": "dist",
         "autoload": {
             "psr-4": {
                 "computerundsound\\culibrary\\": ""
             }
         },
+        "notification-url": "https://packagist.org/downloads/",
+        "license": [
+            "MIT"
+        ],
         "authors": [
             {
                 "name": "Jörg Wrase",
@@ -132,6 +145,6 @@
             }
         ],
         "description": "small helper library",
-        "homepage": "http://www.cusp.de"
+        "homepage": "https://github.com/computerundsound/cuLibrary"
     }
 ]
